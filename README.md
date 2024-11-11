@@ -15,26 +15,17 @@ The Pi needs to have an sd card prepared (using e.g. pi imager). It needs to be 
 
 - Update the system and install USB/IP:
   ```bash
-  sudo apt update
-  ```
-  ```bash
-  sudo apt install -y usbip
+  sudo apt update && sudo apt install -y usbip
   ```
 
 - Load the necessary kernel modules:
   ```bash
-  sudo modprobe usbip_host
-  ```
-  ```bash
-  sudo modprobe vhci_hcd
+  sudo modprobe usbip_host && sudo modprobe vhci_hcd
   ```
 
 - To make this persistent across reboots, add these modules to `/etc/modules`:
   ```bash
-  echo usbip_host | sudo tee -a /etc/modules
-  ```
-  ```bash
-  echo vhci_hcd | sudo tee -a /etc/modules
+  echo usbip_host | sudo tee -a /etc/modules &&  echo vhci_hcd | sudo tee -a /etc/modules
   ```
 
 - Start the usbipd service:
