@@ -132,3 +132,15 @@ The PI will ned to run the usbip commands again after a reboot, to provide the c
   ```bash
   usbip attach -r 10.0.0.201 -b 1-1
   ```
+
+## 5. Automate Octoprint
+
+When the connection between the pi and the server is lost, the usbip command to connect needs to be ran again. 
+The quickest way for that is to integrate the docker debian command into octoprint, to be ran on each restart:
+
+- In the Octoprint Ui open settings -> server -> Restart OctoPrint, which should be `sudo service octoprint restart`
+
+- Change it to
+  ```bash
+  sudo systemctl restart octoprint && docker run --rm --privileged debian:bullseye bash -c "apt update && apt install -y usbip && usbip attach -r 10.0.0.201 -b 1-1"
+  ```
