@@ -82,7 +82,8 @@ The key is running a privileged debian docker container to get those binaries ns
 
 - Adjust the docker run command for octoprint to include
   - `--privileged`
-  - `---device=/dev/ttyUSB0` (adjust device name if needed)
+  - `--device=/dev/ttyUSB0` (adjust device name if needed)
+  - `-v "/var/run/docker.sock:/var/run/docker.sock" \` (needed later for automation)
 
 - Resulting docker run command example:
   ```bash
@@ -93,6 +94,7 @@ The key is running a privileged debian docker container to get those binaries ns
   --pull always \
   --restart always \
   -v "/homes/docker/Octoprint:/octoprint" \
+  -v "/var/run/docker.sock:/var/run/docker.sock" \
   octoprint/octoprint:latest
   ```
 
