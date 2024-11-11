@@ -5,7 +5,7 @@ In this setup, a NAS server was used as the instructing unit, that runs an octop
 The acting unit (that controls the 3d printer) is a raspberry pi zero W, that is connected to the 3d printer per usb and shares that usb conenction over LAN.
 
 In the end, the octoprint docker container serves the app and sends commands, the PI receives them and passes them to the 3d printer.
-If fou whatever reason you also want this setup, follow along.
+If for whatever reason you also want this setup, follow along.
 
 # Setup 
 
