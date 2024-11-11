@@ -107,6 +107,11 @@ The PI will ned to run the usbip commands again after a reboot, to provide the c
 
 - Fill the script with the content of [start-script.sh](start-script.sh) and save (CTRL+X, Y, Enter)
 
+- Make the script executable:
+  ```bash
+  chmod +x /home/pi/start-usbip.sh
+  ```
+
 - Create the crontab entry (as root, so the script runs as root)
   ```bash
   sudo crontab -e
