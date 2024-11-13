@@ -126,7 +126,7 @@ The PI will ned to run the usbip commands again after a reboot, to provide the c
 
 - Reboot the pi with `sudo reboot` and run a debian container:
   ```bash
-  docker run --rm -it --privileged debian:bullseye bash
+  docker run --rm -it --privileged --network=host debian:bullseye bash
   ```
 - Check if connection succeeds from within the debian container's shell (no output means success):
   ```bash
