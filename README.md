@@ -7,6 +7,28 @@ The acting unit (that controls the 3d printer) is a raspberry pi zero W, that is
 In the end, the octoprint docker container serves the app and sends commands, the PI receives them and passes them to the 3d printer.
 If for whatever reason you also want this setup, follow along.
 
+# Infos
+
+## Pros
+
+- **Performance:** The hardware that runs octoprint in this case can be as powerful as you want, e.g. enterprise servers
+- **Simplicity:** The setup of the raspberry pi becomes a bit simpler
+- **Centralization:** The server becomes the central point serving octoprint, allowing using its files and combining other apps with it, as well as automation in a simpler way
+- **Singleton:** This octoprint server can serve many printers at once (if octoprint allows x printers in one app)
+
+## Cons
+
+- **Network dependency:** This setup requires both devices to be connected to the same network
+- **Stability:** In an ideal setup, the wifi connection would be always stable. But nothing is ideal, so eventually at some point the print will randomly stop due to disconnection/latency
+- **Increased complexity:** This setup is not as easy as just flashing a pi with a custom image, especially having to set up the usb/ip connection and troubleshootings
+- **Power consumption:** A powerful machine serving octoprint probably consumes more energy than a 10 Watt pi
+
+Overall, this setup was an experiment which worked fine, but should only be used if you know what you are doing and have very specific requirements. 
+The good thing is, after setting the server up successfully, it should be possible to just leave out the PI and plug the printer in to the server directly via usb, turning the server into a  
+very, very powerfuly Octoprint server with connectivity issues fixed, due to having a wired connection, eliminating the pi completely.
+
+Also proceeed with caution when using this, when my print with the usb/ip setup failed after around 5 hours due to network instability, the hotend was still 200C and the bed still 50C, whith the printer having no movement at all. This is a potential fire/gas hazard with the filament coming out black, when extruding after a while.
+
 # Setup 
 
 ## 1. Set Up the Raspberry Pi as a USB/IP Server/actor
